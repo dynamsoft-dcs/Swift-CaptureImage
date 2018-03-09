@@ -21,7 +21,8 @@ class ViewController: UIViewController,DcsUIVideoViewDelegate,DcsUIImageEditorVi
         let titleItem = UINavigationItem(title: "CaptureImage");
         navigatorBar.pushItem(titleItem, animated: true);
         self.view.addSubview(navigatorBar);
-        
+        ///////////////////set the log level//////////////////
+	DcsView.setLogLevel(DLLE_DEBUG);
         /////////////add DcsView  ////////////////////////////////
         dcsView = DcsView.self.init(frame:CGRect.init(x: 0, y:navigatorBar.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height-navigatorBar.frame.size.height));
         dcsView.currentView = DVE_IMAGEGALLERYVIEW;
@@ -75,7 +76,7 @@ class ViewController: UIViewController,DcsUIVideoViewDelegate,DcsUIImageEditorVi
             print( "imageEditorView cancel tap invoked");
         }
     }
-    func onPostCapture(_ sender: Any!) {
+    func onPostCapture(_ sender: Any!, image: DcsImage!) {
         print( "PostCapture invoked");
     }
     func onCaptureTapped(_ sender: Any!) {
